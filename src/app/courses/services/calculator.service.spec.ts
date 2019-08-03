@@ -6,10 +6,17 @@ describe('CalculatorService', () => {
 it('should add two numbers', () => {
     //Logger service doesn't have any 
     //dependencies so it can be passed to the service
-    const calculator = new CalculatorService(new LoggerService());
+    const logger = jasmine.createSpyObj('LoggerService', ["log"])
+    
+    // spyOn(logger, 'log')
+    //takes in service then method or methods
+    const calculator = new CalculatorService(logger);
 
     const result = calculator.add(2,2)
     expect(result).toBe(4)
+    expect(logger.log).toHaveBeenCalledTimes(1)
+
+
             
 })
 
