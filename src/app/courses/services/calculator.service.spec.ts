@@ -3,6 +3,14 @@ import { LoggerService } from "./logger.service";
 
 describe('CalculatorService', () => {
 
+    let calculator: CalculatorService,
+    loggerSpy: any; 
+
+    beforeEach(() => {
+        const logger = jasmine.createSpyObj('LoggerService', ['log'])
+    })
+
+
 it('should add two numbers', () => {
     //Logger service doesn't have any 
     //dependencies so it can be passed to the service
@@ -14,18 +22,19 @@ it('should add two numbers', () => {
 
     const result = calculator.add(2,2)
     expect(result).toBe(4)
-    expect(logger.log).toHaveBeenCalledTimes(1)
+    expect(loggerSpy.log).toHaveBeenCalledTimes(1)
 
 
             
 })
 
 it('should subtract two numbers', () => {
+    const logger = jasmine.createSpyObj('LoggerService', ["log"])
     const calculator = new CalculatorService(new LoggerService());
 
     const result = calculator.subtract(2,2)
     expect(result).toBe(0, "unexpected subtraction result")
-            
+    expect(loggerSpy.log).toHaveBeenCalledTimes(1)        
 })
 
 })
