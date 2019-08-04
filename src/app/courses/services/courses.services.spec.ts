@@ -68,6 +68,7 @@ describe("CoursesService", () => {
         .toEqual(changes.titles.description)  
         req.flush({
             ...COURSES[12],
+            ...changes
         })   
     })
 
