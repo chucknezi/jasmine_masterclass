@@ -3,7 +3,7 @@ import {LoggerService} from './logger.service';
 import {TestBed} from '@angular/core/testing';
 
 
-describe('CalculatorService', () => {
+xdescribe('CalculatorService', () => {
 
     let calculator: CalculatorService,
         loggerSpy: any;
@@ -25,7 +25,7 @@ describe('CalculatorService', () => {
 
     });
 
-    it('should add two numbers', () => {
+    xit('should add two numbers', () => {
 
         console.log("add test");
 
@@ -38,7 +38,7 @@ describe('CalculatorService', () => {
     });
 
 
-    it('should subtract two numbers', () => {
+    xit('should subtract two numbers', () => {
 
         console.log("subtract test");
 
