@@ -78,25 +78,30 @@ describe('HomeComponent', () => {
     coursesService.findAllCourses.and.returnValue(of(setupCourses()));
     fixture.detectChanges();
     const tabs = el.queryAll(By.css(".mat-tab-label"));
-    expect(tabs.length).toBe(2  , 'Expected two tabs to be found')
+    expect(tabs.length).toBe(2  , 'Expected two tabs to be found');
       
   });
 
 
-  it("should display advanced courses when tab clicked - fakeAsync", fakeAsync(() => {
+  it("should display advanced courses when tab clicked", () => {
+      coursesService.findAllCourses.and.returnValue(of(setupCourses()));
+      fixture.detectChanges();
+      const tabs = el.queryAll(By.css(".mat-tab-label"));
+      click(tabs[1])
 
-      
+      const cardTitles = el.queryAll(By.css('.mat-card-title'));
+      expect(cardTitles.length).toBeGreaterThan(0,"Could not find card titles")
+      expect(cardTitles[0].nativeElement.textContent).toContain("Angular Security Course");
+  });
 
-  }));
 
-
-    it("should display advanced courses when tab clicked - async", async(() => {
+    // it("should display advanced courses when tab clicked - async", async(() => {
 
          
 
-        });
+    //     });
 
-    }));
+    // }));
 
 
 });
